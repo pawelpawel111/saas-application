@@ -1,0 +1,40 @@
+<!-- frontend/dashboard.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Dashboard</h1>
+                <p>Witaj w panelu administracyjnym.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h2>Statystyki</h2>
+                <p id="stats">Ładowanie statystyk...</p>
+            </div>
+            <div class="col-4">
+                <h2>Lista usług</h2>
+                <ul id="service-list">
+                    <!-- Usługi będą tutaj wczytane -->
+                </ul>
+            </div>
+            <div class="col-4">
+                <h2>Lista pracowników</h2>
+                <ul id="employee-list">
+                    <!-- Pracownicy będą tutaj wczytani -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

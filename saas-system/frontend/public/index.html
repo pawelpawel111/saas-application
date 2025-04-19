@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twoja Aplikacja SaaS</title>
+    <link rel="stylesheet" href="%PUBLIC_URL%/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Style dla przycisków logowania i rejestracji */
+        .auth-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            background-color: #007bff; /* Kolor tła */
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .auth-button:hover {
+            background-color: #0056b3; /* Kolor tła po najechaniu */
+        }
+
+        /* Style dla modali (wyskakujących okienek) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Style dla formularzy */
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <noscript>Musisz włączyć JavaScript, aby uruchomić tę aplikację.</noscript>
+    <div id="root"></div>
+
+    <header>
+        <div class="logo">Twoje Logo</div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <button id="loginBtn" class="auth-button">Zaloguj się</button>
+            <button id="registerBtn" class="auth-button">Zarejestruj się</button>
+        </div>
+    </header>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Logowanie</h2>
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" class="form-input" required>
+                <button type="submit" class="form-button">Zaloguj się</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegister">&times;</span>
+            <h2>Rejestracja</h2>
+            <form id="registerForm">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+                <label for="registerEmail">Email:</label>
+                <input type="email" id="registerEmail" name="registerEmail" class="form-input" required>
+                <label for="registerPassword">Hasło:</label>
+                <input type="password" id="registerPassword" name="registerPassword" class="form-input" required>
+                <label for="confirmPassword">Powtórz hasło:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                <button type="submit" class="form-button">Zarejestruj się</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>Rewolucjonizuj swój biznes z naszą aplikacją SaaS</h1>
+        <p>Odkryj potężne narzędzia, które pomogą Ci zwiększyć produktywność i osiągnąć sukces.</p>
+        <button class="cta-button">Wypróbuj Demo</button>
+    </section>
+
+    <section class="pricing">
+        <h2>Nasze Oferty</h2>
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>Basic</h3>
+                <p>Podstawowe funkcje dla małych firm.</p>
+                <p class="price">19 zł/miesiąc</p>
+                <ul>
+                    <li>Funkcja 1</li>
+                    <li>Funkcja 2</li>
+                    <li>Funkcja 3</li>
+                </ul>
+                <button class="select-plan-button">Wybierz plan</button>
+            </div>
+            <div class="plan pro">
+                <h3>Pro</h3>
+                <p>Zaawansowane funkcje dla rozwijających się firm.</p>
+                <p class="price">49 zł/miesiąc</p>
+                <ul>
+                    <li>Funkcja 1</li>
+                    <li>Funkcja 2</li>
+                    <li>Funkcja 3</li>
+                    <li>Funkcja 4</li>
+                </ul>
+                <button class="select-plan-button">Wybierz plan</button>
+            </div>
+            <div class="plan enterprise">
+                <h3>Enterprise</h3>
+                <p>Rozwiązania dostosowane do potrzeb dużych przedsiębiorstw.</p>
+                <p class="price">99 zł/miesiąc</p>
+                <ul>
+                    <li>Funkcja 1</li>
+                    <li>Funkcja 2</li>
+                    <li>Funkcja 3</li>
+                    <li>Funkcja 4</li>
+                    <li>Funkcja 5</li>
+                </ul>
+                <button class="select-plan-button">Wybierz plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Kluczowe Funkcjonalności</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analizy i Raporty</h3>
+                <p>Śledź kluczowe wskaźniki i generuj raporty.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Zarządzanie Użytkownikami</h3>
+                <p>Kontroluj dostęp i uprawnienia użytkowników.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-cog"></i>
+                <h3>Automatyzacja Procesów</h3>
+                <p>Usprawnij swoje procesy biznesowe dzięki automatyzacji.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Opinie Klientów</h2>
+        <div class="testimonial-list">
+            <div class="testimonial">
+                <p>"Aplikacja SaaS X to rewolucja w naszym biznesie. Polecam!"</p>
+                <p class="author">- Jan Kowalski, CEO</p>
+            </div>
+            <div class="testimonial">
+                <p>"Dzięki tej aplikacji zaoszczędziliśmy mnóstwo czasu i pieniędzy."</p>
+                <p class="author">- Anna Nowak, Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Zacznij korzystać z naszej aplikacji już dziś!</h2>
+        <button class="cta-button">Zarejestruj się</button>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2024 Twoja Aplikacja SaaS. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Kod JavaScript do obsługi modali i logowania
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeLogin = document.getElementById('closeLogin');
+        const closeRegister = document.getElementById('closeRegister');
+        const loginForm = document.getElementById('loginForm');
+
+        loginBtn.onclick = function() {
+            loginModal.style.display = "block";
+        }
+
+        registerBtn.onclick = function() {
+            registerModal.style.display = "block";
+        }
+
+        closeLogin.onclick = function() {
+            loginModal.style.display = "none";
+        }
+
+        closeRegister.onclick = function() {
+            registerModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+            if (event.target == registerModal) {
+                registerModal.style.display = "none";
+            }
+        }
+
+        // Obsługa formularza logowania
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Tutaj dodaj kod do weryfikacji logowania (np. wysłanie danych do serwera)
+            // Po pomyślnym zalogowaniu:
+            window.location.href = '/src/pages/dashboard.html'; // Poprawiona ścieżka do dashboard.html
+        });
+    </script>
+</body>
+</html>

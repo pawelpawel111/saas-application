@@ -1,0 +1,39 @@
+.dialog {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px; /* Zwiększ szerokość */
+    max-width: 95%; /* Zapewnij responsywność */
+    margin: 20px auto;
+}
+
+.dialog input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.dialog .button-group button {
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-modal {
+    width: 600px; /* Zwiększ szerokość okna modalnego */
+    max-width: 95%; /* Zapewnij responsywność */
+    height: auto; /* Zezwól na automatyczną wysokość */
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    marginRight: -50%;
+    transform: translate(-50%, -50%);
+}
